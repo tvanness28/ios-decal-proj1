@@ -32,27 +32,16 @@ class ToDoListViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-//        tableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-//        tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        tableView.heightAnchor.constraint(equalToConstant: tableView.contentSize.height).isActive = true
         tableView.reloadData()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        tableView.heightAnchor.constraint(equalToConstant: tableView.contentSize.height).isActive = true
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.heightAnchor.constraint(equalToConstant: tableView.contentSize.height).isActive = true
-        tableView.reloadData()
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -65,7 +54,8 @@ class ToDoListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func statsTapped(_ sender: UIBarButtonItem) {
-        
+        let vc = ToDoListStatsViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 //    func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,24 +72,22 @@ class ToDoListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UITableViewCell
-//        let cell: TaskCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TaskCell
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.textLabel?.text = tasks[indexPath.row].taskTitle
-        cell.imageView?.image = #imageLiteral(resourceName: "empty-check")
+        cell.imageView?.image = tasks[indexPath.row].taskImage
         cell.detailTextLabel?.text = tasks[indexPath.row].taskDetail
-//        cell.taskLabel.text = tasks[indexPath.row].taskTitle
-//        cell.checkMarkView.image = UIImage(named: "empty-check")
 
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(tasks[indexPath.row])
+        tasks[indexPath.row].markComplete()
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
-            print("Delete")
+            tasks[indexPath.row].releaseTask()
             tasks.remove(at: indexPath.row)
             self.tableView.reloadData()
         }

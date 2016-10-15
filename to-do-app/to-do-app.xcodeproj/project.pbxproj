@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A535496D1DB2EC280008F4FF /* ToDoListStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A535496C1DB2EC280008F4FF /* ToDoListStatsViewController.swift */; };
 		A56D25CD1DAD59E000BF9329 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D25CC1DAD59E000BF9329 /* AppDelegate.swift */; };
 		A56D25CF1DAD59E000BF9329 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D25CE1DAD59E000BF9329 /* ToDoListViewController.swift */; };
 		A56D25D21DAD59E000BF9329 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A56D25D01DAD59E000BF9329 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A535496C1DB2EC280008F4FF /* ToDoListStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoListStatsViewController.swift; sourceTree = "<group>"; };
 		A56D25C91DAD59E000BF9329 /* To-Do-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "To-Do-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56D25CC1DAD59E000BF9329 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A56D25CE1DAD59E000BF9329 /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				A56D25CC1DAD59E000BF9329 /* AppDelegate.swift */,
 				A56D25CE1DAD59E000BF9329 /* ToDoListViewController.swift */,
+				A535496C1DB2EC280008F4FF /* ToDoListStatsViewController.swift */,
 				A58691191DADB4A900CF551C /* TaskCell.swift */,
 				A5DB96D41DAD688F00303E95 /* ToDoListAddViewController.swift */,
 				A586911B1DAFEF3000CF551C /* Task.swift */,
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A535496D1DB2EC280008F4FF /* ToDoListStatsViewController.swift in Sources */,
 				A586911A1DADB4A900CF551C /* TaskCell.swift in Sources */,
 				A5DB96D51DAD688F00303E95 /* ToDoListAddViewController.swift in Sources */,
 				A586911C1DAFEF3000CF551C /* Task.swift in Sources */,
