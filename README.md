@@ -36,14 +36,14 @@ completed
 - [ ] Ability to return to To-Do List Table View
 
 ###  Add To-Do Item View Controller
-- [*] Ability to add a task, where entering text and confirming returns to the
+- [x] Ability to add a task, where entering text and confirming returns to the
 To-Do List Table View, now updated with the new task added
-- [*] Ability to cancel and return to To-Do List Table View without adding a
+- [x] Ability to cancel and return to To-Do List Table View without adding a
 task
 
 ###  General Requirements      
-- [*] Create a Universal app when you construct your Xcode project.
-- [*] UI must scale to iPhone 6 and up and all iPads in both Portrait and
+- [x] Create a Universal app when you construct your Xcode project.
+- [x] UI must scale to iPhone 6 and up and all iPads in both Portrait and
 Landscape orientations.
   * Hint: Think Auto-Layout. For UILabels, autoshrink in the Attributes
   Inspector is also useful. 
