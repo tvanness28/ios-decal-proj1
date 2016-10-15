@@ -27,8 +27,8 @@ You **must** have these three classes, feel free to name them as you please. In 
 - [ ] Ability to visually unmark a task as completed
 - [ ] Tasks must automatically clear 24 hours after they are marked as
 completed
-- [*] Ability to delete a task
-- [*] Button to add a To-Do Item (goes to Add To-Do Item View)
+- [x] Ability to delete a task
+- [x] Button to add a To-Do Item (goes to Add To-Do Item View)
 - [ ] Button to view Stats (goes to Daily Stats View)
 
 ###  View Controller of To-Do List Statistics
