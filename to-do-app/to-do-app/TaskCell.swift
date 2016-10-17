@@ -9,8 +9,9 @@
 import UIKit
 
 class TaskCell: UITableViewCell {
-    let checkMarkView = UIImageView(image: UIImage(named: "empty-check"))
+    let checkMarkView = UIImageView()//image: #imageLiteral(resourceName: "unchecked_checkbox"))
     let taskLabel = UILabel()
+    let taskDetail = UILabel()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -21,20 +22,19 @@ class TaskCell: UITableViewCell {
         
         checkMarkView.translatesAutoresizingMaskIntoConstraints = false
         taskLabel.translatesAutoresizingMaskIntoConstraints     = false
-
-//        checkMarkView.backgroundColor = UIColor.darkGray
-//        checkMarkView.image = UIImage(named: "empty-check")
+        taskDetail.translatesAutoresizingMaskIntoConstraints     = false
         
         contentView.addSubview(checkMarkView)
         contentView.addSubview(taskLabel)
+        contentView.addSubview(taskDetail)
 
-        checkMarkView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-//        checkMarkView.heightAnchor.constraint(equalTo: contentView.heightAnchor, constant: 2).isActive = true
-        checkMarkView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.25).isActive = true
+        checkMarkView.heightAnchor.constraint(equalTo: contentView.heightAnchor).isActive = true
+        checkMarkView.widthAnchor.constraint(equalTo: checkMarkView.heightAnchor).isActive = true
+        checkMarkView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
 
-        taskLabel.leadingAnchor.constraint(equalTo: checkMarkView.trailingAnchor, constant: 8).isActive = true
-        taskLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, constant: 2).isActive = true
-        taskLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.75).isActive = true
+        taskLabel.leadingAnchor.constraint(equalTo: checkMarkView.trailingAnchor, constant: 20).isActive = true
         
+        taskDetail.leadingAnchor.constraint(equalTo: checkMarkView.trailingAnchor, constant: 20).isActive = true
+
     }
 }

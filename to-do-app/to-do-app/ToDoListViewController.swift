@@ -24,8 +24,8 @@ class ToDoListViewController: UIViewController, UITableViewDelegate, UITableView
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-//        tableView.register(TaskCell.self, forCellReuseIdentifier: "cell")
+//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(TaskCell.self, forCellReuseIdentifier: "cell")
         tableView.backgroundColor = UIColor.lightGray
         self.view.addSubview(tableView)
         
@@ -34,11 +34,14 @@ class ToDoListViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         tableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        checkCompletedTimes()
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        checkCompletedTimes()
         tableView.reloadData()
     }
 
@@ -46,6 +49,19 @@ class ToDoListViewController: UIViewController, UITableViewDelegate, UITableView
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func checkCompletedTimes() {
+        if tasks.count > 0 {
+            for i in 0...(tasks.count-1) {
+                if let initTime = tasks[i].timeComplete {
+                    if NSDate().timeIntervalSince(initTime as Date) >= 3600 {
+                        tasks[i].releaseTask()
+                        tasks.remove(at: i)
+                    }
+                }
+            }
+        }
     }
     
     func addTapped(_ sender: UIBarButtonItem) {
@@ -57,25 +73,25 @@ class ToDoListViewController: UIViewController, UITableViewDelegate, UITableView
         let vc = ToDoListStatsViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 2
-//    }
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return UIView(frame: CGRect(x: screen.width/2 - 100, y: screen.height/2 - 100, width: screen.width, height: 50))
-//    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UITableViewCell
+        let cell: TaskCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TaskCell
         cell.selectionStyle = UITableViewCellSelectionStyle.none
-        cell.textLabel?.text = tasks[indexPath.row].taskTitle
-        cell.imageView?.image = tasks[indexPath.row].taskImage
-        cell.detailTextLabel?.text = tasks[indexPath.row].taskDetail
+        cell.taskLabel.text = tasks[indexPath.row].taskTitle
+        if let detail = tasks[indexPath.row].taskDetail {
+            cell.taskLabel.heightAnchor.constraint(equalTo: cell.heightAnchor, multiplier: 0.5).isActive = true
+            cell.taskLabel.topAnchor.constraint(equalTo: cell.topAnchor).isActive = true
+            cell.taskDetail.text = detail
+            cell.taskDetail.topAnchor.constraint(equalTo: cell.taskLabel.bottomAnchor).isActive = true
+            cell.taskDetail.heightAnchor.constraint(equalTo: cell.heightAnchor, multiplier: 0.5).isActive = true
+        } else {
+            cell.taskLabel.heightAnchor.constraint(equalTo: cell.heightAnchor).isActive = true
+        }
+        cell.checkMarkView.image = tasks[indexPath.row].taskImage
 
         return cell
     }

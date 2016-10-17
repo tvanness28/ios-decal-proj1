@@ -25,7 +25,7 @@ You **must** have these three classes, feel free to name them as you please. In 
 ###  Table View Controller of To-Do List Items
 - [x] Ability to visually mark a task as completed
 - [x] Ability to visually unmark a task as completed
-- [ ] Tasks must automatically clear 24 hours after they are marked as
+- [x] Tasks must automatically clear 24 hours after they are marked as
 completed
 - [x] Ability to delete a task
 - [x] Button to add a To-Do Item (goes to Add To-Do Item View)

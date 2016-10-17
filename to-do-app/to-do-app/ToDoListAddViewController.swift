@@ -24,29 +24,19 @@ class ToDoListAddViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-//        tableView.backgroundColor = UIColor.lightGray
         self.view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-//        tableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-//        tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
         taskLabelView.placeholder = "New Task"
         taskLabelView.borderStyle = UITextBorderStyle.none
         taskLabelView.translatesAutoresizingMaskIntoConstraints = false
-//        self.view.addSubview(taskLabelView)
-        
-//        taskLabelView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 10).isActive = true
-//        taskLabelView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.75).isActive = true
-        
+
         taskDetailView.placeholder = "Task Details"
         taskDetailView.borderStyle = UITextBorderStyle.none
         taskDetailView.translatesAutoresizingMaskIntoConstraints = false
-//        self.view.addSubview(taskDetailView)
-//        
-//        taskDetailView.topAnchor.constraint(equalTo: taskLabelView.bottomAnchor, constant: 10).isActive = true
-//        taskDetailView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.75).isActive = true
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,9 +58,9 @@ class ToDoListAddViewController: UIViewController, UITableViewDelegate, UITableV
     func doneTapped(_ selector: UIBarButtonItem) {
         if let label = taskLabelView.text {
             if label != "" {
-                var detail = ""
-                if let d = taskDetailView.text {
-                    detail = d
+                var detail = taskDetailView.text
+                if detail == "" {
+                    detail = nil
                 }
                 tasks.append(Task(label, detail))
                 let vc = ToDoListViewController()

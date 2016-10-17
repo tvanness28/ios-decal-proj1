@@ -11,12 +11,12 @@ import UIKit
 class Task {
     static var complete: Int = 0
     var taskTitle: String
-    var taskDetail: String
+    var taskDetail: String?
     var taskComplete: Bool
     var timeComplete: NSDate?
     var taskImage: UIImage = #imageLiteral(resourceName: "unchecked_checkbox")
     
-    init(_ title: String, _ detail: String) {
+    init(_ title: String, _ detail: String?) {
         self.taskTitle = title
         self.taskDetail = detail
         self.taskComplete = false
@@ -50,5 +50,4 @@ class Task {
 }
 
 var tasks = [Task]()
-
 
